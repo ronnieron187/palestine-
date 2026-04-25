@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Free Palestine — Stand With Humanity</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --black:#0a0a0a;
+  --white:#f5f0e8;
+  --cream:#ede8dc;
+  --green:#1a6b3c;
+  --green-light:#2d9e5f;
+  --red:#c0272d;
+  --red-light:#e03238;
+  --olive:#4a7c59;
+  --sand:#d4b896;
+  --text:#1c1c1c;
+  --muted:#6b6b6b;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--white);
+  color:var(--text);
+  font-family:'Space Grotesk',sans-serif;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 6vw;
+  background:rgba(245,240,232,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,0.08);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:700;
+  color:var(--green);letter-spacing:0.5px;
+}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{
+  text-decoration:none;color:var(--text);
+  font-size:13px;font-weight:500;letter-spacing:1px;
+  text-transform:uppercase;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--green);}
+.nav-cta{
+  background:var(--green);color:#fff;
+  padding:9px 22px;border-radius:4px;
+  font-size:12px;font-weight:600;letter-spacing:1px;
+  text-transform:uppercase;text-decoration:none;
+  transition:background 0.2s,transform 0.15s;
+}
+.nav-cta:hover{background:var(--green-light);transform:translateY(-1px);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;
+  padding:120px 6vw 80px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#0a0a0a 0%,#1a3a27 50%,#0e1f16 100%);
+  z-index:0;
+}
+.hero-flag{
+  position:absolute;right:0;top:0;bottom:0;
+  width:45%;display:flex;flex-direction:column;
+  overflow:hidden;opacity:0.18;
+}
+.flag-black{flex:1;background:#000;}
+.flag-white{flex:1;background:#fff;}
+.flag-green{flex:1;background:#007a3d;}
+.flag-red{
+  position:absolute;left:0;top:0;bottom:0;
+  width:0;height:0;border-style:solid;
+  border-width:calc(50vh) 0 calc(50vh) 180px;
+  border-color:transparent transparent transparent #ce1126;
+}
+.hero-grain{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index:1;pointer-events:none;
+}
+.hero-content{position:relative;z-index:2;max-width:680px;}
+.hero-tag{
+  display:inline-block;
+  background:var(--red);color:#fff;
+  font-size:11px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;padding:6px 14px;
+  border-radius:2px;margin-bottom:28px;
+  animation:fadeUp 0.8s 0.1s both;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,8vw,96px);
+  font-weight:300;line-height:0.95;color:#fff;
+  animation:fadeUp 0.8s 0.2s both;
+}
+.hero h1 em{font-style:italic;color:var(--sand);display:block;}
+.hero-sub{
+  font-size:17px;font-weight:300;
+  color:rgba(255,255,255,0.65);
+  line-height:1.7;margin-top:28px;max-width:520px;
+  animation:fadeUp 0.8s 0.35s both;
+}
+.hero-actions{
+  display:flex;gap:16px;flex-wrap:wrap;
+  margin-top:44px;animation:fadeUp 0.8s 0.5s both;
+}
+.btn-primary{
+  background:var(--green);color:#fff;
+  padding:14px 32px;border-radius:4px;
+  font-size:13px;font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;text-decoration:none;
+  transition:all 0.2s;border:2px solid var(--green);
+}
+.btn-primary:hover{background:transparent;color:var(--green-light);border-color:var(--green-light);}
+.btn-outline{
+  background:transparent;color:#fff;
+  padding:14px 32px;border-radius:4px;
+  font-size:13px;font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;text-decoration:none;
+  border:2px solid rgba(255,255,255,0.3);transition:all 0.2s;
+}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.06);}
+.hero-stats{
+  position:relative;z-index:2;
+  display:flex;gap:48px;flex-wrap:wrap;
+  margin-top:72px;padding-top:40px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  animation:fadeUp 0.8s 0.65s both;
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;font-weight:600;color:var(--sand);line-height:1;
+}
+.stat-label{
+  font-size:12px;font-weight:500;
+  color:rgba(255,255,255,0.45);
+  letter-spacing:1px;text-transform:uppercase;margin-top:6px;
+}
+
+/* MARQUEE */
+.marquee-wrap{
+  background:var(--green);padding:14px 0;
+  overflow:hidden;border-top:3px solid var(--red);
+}
+.marquee-track{
+  display:flex;gap:0;
+  animation:marquee 28s linear infinite;width:max-content;
+}
+.marquee-item{
+  white-space:nowrap;font-size:12px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;color:#fff;
+  padding:0 40px;display:flex;align-items:center;gap:16px;
+}
+.marquee-item::after{content:'✦';opacity:0.5;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:100px 6vw;}
+.section-label{
+  font-size:11px;font-weight:600;letter-spacing:3px;
+  text-transform:uppercase;color:var(--green);margin-bottom:16px;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,5vw,60px);
+  font-weight:300;line-height:1.1;color:var(--text);max-width:640px;
+}
+.section-title em{font-style:italic;color:var(--red);}
+
+/* ABOUT */
+.about{background:var(--cream);}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;margin-top:64px;
+}
+.about-text p{
+  font-size:16px;line-height:1.85;color:#444;
+  margin-bottom:20px;font-weight:300;
+}
+.about-text p strong{color:var(--text);font-weight:600;}
+.about-card{
+  background:var(--black);border-radius:8px;padding:40px;
+  color:#fff;position:relative;overflow:hidden;
+}
+.about-card::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,107,60,0.4),transparent 70%);
+}
+.about-card-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:300;color:var(--sand);
+  margin-bottom:24px;font-style:italic;
+}
+.fact-list{display:flex;flex-direction:column;gap:16px;}
+.fact-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.fact-item:last-child{border-bottom:none;padding-bottom:0;}
+.fact-icon{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--green);display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:14px;
+}
+.fact-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;}
+.fact-text strong{color:#fff;display:block;font-size:15px;margin-bottom:3px;}
+
+/* HOW TO HELP */
+.help{background:#fff;}
+.help-intro{
+  font-size:17px;color:var(--muted);line-height:1.8;
+  max-width:600px;margin-top:24px;font-weight:300;
+}
+.ways-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;margin-top:60px;
+}
+.way-card{
+  border:1.5px solid #e8e0d0;border-radius:8px;padding:36px 30px;
+  transition:all 0.3s;position:relative;overflow:hidden;background:#fff;
+}
+.way-card::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
+}
+.way-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,107,60,0.1);}
+.way-card:hover::before{transform:scaleX(1);}
+.way-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;font-weight:700;color:#e8e0d0;line-height:1;margin-bottom:16px;
+}
+.way-title{font-size:17px;font-weight:600;margin-bottom:12px;color:var(--text);}
+.way-desc{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;}
+.way-link{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:20px;font-size:13px;font-weight:600;
+  color:var(--green);text-decoration:none;letter-spacing:0.5px;transition:gap 0.2s;
+}
+.way-link:hover{gap:10px;}
+
+/* CRISIS */
+.crisis{background:var(--black);color:#fff;position:relative;overflow:hidden;}
+.crisis::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--green),var(--red));
+}
+.crisis-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;margin-top:60px;
+}
+.crisis .section-label{color:var(--sand);}
+.crisis .section-title{color:#fff;max-width:100%;}
+.crisis-text p{
+  font-size:15px;line-height:1.85;
+  color:rgba(255,255,255,0.6);margin-bottom:18px;font-weight:300;
+}
+.crisis-numbers{display:flex;flex-direction:column;gap:20px;}
+.crisis-num-item{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-left:3px solid var(--red);border-radius:4px;padding:24px;
+}
+.crisis-num-item.green{border-left-color:var(--green);}
+.crisis-num-item.sand{border-left-color:var(--sand);}
+.crisis-big{
+  font-family:'Cormorant Garamond',serif;
+  font-size:44px;font-weight:600;color:#fff;line-height:1;margin-bottom:8px;
+}
+.crisis-desc{font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;line-height:1.6;}
+
+/* ORGS */
+.orgs{background:var(--cream);}
+.orgs-intro{
+  font-size:16px;color:var(--muted);line-height:1.8;
+  max-width:580px;margin-top:20px;font-weight:300;
+}
+.orgs-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;margin-top:56px;
+}
+.org-card{
+  background:#fff;border-radius:8px;padding:32px;
+  border:1.5px solid #e8e0d0;transition:all 0.3s;
+}
+.org-card:hover{border-color:var(--green);box-shadow:0 8px 30px rgba(0,0,0,0.08);transform:translateY(-3px);}
+.org-icon{
+  width:48px;height:48px;border-radius:8px;
+  background:var(--green);display:flex;align-items:center;
+  justify-content:center;font-size:22px;margin-bottom:18px;
+}
+.org-name{font-size:16px;font-weight:600;margin-bottom:8px;}
+.org-desc{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:18px;}
+.org-link{
+  font-size:12px;font-weight:600;color:var(--green);
+  text-decoration:none;letter-spacing:1px;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s;
+}
+.org-link:hover{gap:10px;}
+
+/* QUOTE */
+.quote-section{background:var(--green);padding:80px 6vw;text-align:center;}
+blockquote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,48px);
+  font-weight:300;font-style:italic;color:#fff;line-height:1.3;
+  max-width:800px;margin:0 auto;
+}
+blockquote::before{
+  content:'"';font-size:80px;color:rgba(255,255,255,0.15);
+  line-height:0;vertical-align:-30px;margin-right:8px;
+}
+.quote-attr{
+  margin-top:28px;font-size:14px;color:rgba(255,255,255,0.6);
+  letter-spacing:1px;font-family:'Space Grotesk',sans-serif;
+}
+
+/* TAKE ACTION */
+.action{background:#fff;}
+.action-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;margin-top:56px;
+}
+.action-item{
+  background:var(--cream);border-radius:8px;padding:32px 24px;
+  text-align:center;border:1.5px solid #e8e0d0;transition:all 0.3s;
+}
+.action-item:hover{border-color:var(--red);transform:translateY(-3px);}
+.action-emoji{font-size:36px;margin-bottom:16px;}
+.action-title{font-size:15px;font-weight:600;margin-bottom:8px;}
+.action-desc{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+
+/* NEWSLETTER */
+.newsletter{background:var(--black);padding:80px 6vw;text-align:center;}
+.newsletter-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,5vw,54px);font-weight:300;color:#fff;margin-bottom:16px;
+}
+.newsletter-sub{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:40px;font-weight:300;}
+.newsletter-form{
+  display:flex;gap:12px;justify-content:center;
+  flex-wrap:wrap;max-width:480px;margin:0 auto;
+}
+.newsletter-form input{
+  flex:1;min-width:220px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:4px;padding:14px 20px;color:#fff;
+  font-family:'Space Grotesk',sans-serif;font-size:14px;
+  outline:none;transition:border-color 0.2s;
+}
+.newsletter-form input:focus{border-color:var(--green);}
+.newsletter-form input::placeholder{color:rgba(255,255,255,0.3);}
+.newsletter-form button{
+  background:var(--green);color:#fff;border:none;border-radius:4px;
+  padding:14px 28px;cursor:pointer;font-family:'Space Grotesk',sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:background 0.2s;
+}
+.newsletter-form button:hover{background:var(--green-light);}
+
+/* FOOTER */
+footer{background:#060606;padding:60px 6vw 30px;}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:48px;margin-bottom:48px;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:700;color:#fff;margin-bottom:16px;
+}
+.footer-logo span{color:var(--red);}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;font-weight:300;max-width:260px;}
+.footer-flag{
+  display:flex;flex-direction:column;
+  width:60px;height:40px;margin-top:20px;border-radius:3px;overflow:hidden;
+}
+.ff-black{flex:1;background:#000;}
+.ff-white{flex:1;background:#fff;}
+.ff-green{flex:1;background:#007a3d;}
+.footer-col-title{
+  font-size:11px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.footer-links a{
+  font-size:14px;color:rgba(255,255,255,0.45);
+  text-decoration:none;transition:color 0.2s;font-weight:300;
+}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.06);padding-top:28px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.25);}
+.footer-solidarity{font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:1px;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid,.crisis-grid,.footer-grid{grid-template-columns:1fr;}
+  .hero-flag{width:100%;opacity:0.08;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  nav{padding:14px 5vw;}
+  .hero{padding:100px 5vw 60px;}
+  section{padding:70px 5vw;}
+  .hero-stats{gap:28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Free<span>Palestine</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#help">How to Help</a></li>
+    <li><a href="#crisis">The Crisis</a></li>
+    <li><a href="#orgs">Organizations</a></li>
+    <li><a href="#action">Take Action</a></li>
+  </ul>
+  <a href="#orgs" class="nav-cta">Support Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-flag">
+    <div class="flag-black"></div>
+    <div class="flag-white"></div>
+    <div class="flag-green"></div>
+    <div class="flag-red"></div>
+  </div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Humanitarian Awareness</div>
+    <h1>Stand With<em>Palestine</em></h1>
+    <p class="hero-sub">Every voice matters. Every action counts. Join millions around the world in standing for justice, humanity, and the right of the Palestinian people to live with dignity and freedom.</p>
+    <div class="hero-actions">
+      <a href="#orgs" class="btn-primary">Find Ways to Help</a>
+      <a href="#about" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">2.3M+</div>
+      <div class="stat-label">People in Gaza</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">75+</div>
+      <div class="stat-label">Years of Displacement</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">140+</div>
+      <div class="stat-label">Countries in Solidarity</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Free Palestine</span>
+    <span class="marquee-item">Stand With Gaza</span>
+    <span class="marquee-item">Humanitarian Aid</span>
+    <span class="marquee-item">Justice &amp; Peace</span>
+    <span class="marquee-item">Raise Your Voice</span>
+    <span class="marquee-item">Human Rights</span>
+    <span class="marquee-item">Ceasefire Now</span>
+    <span class="marquee-item">Free Palestine</span>
+    <span class="marquee-item">Stand With Gaza</span>
+    <span class="marquee-item">Humanitarian Aid</span>
+    <span class="marquee-item">Justice &amp; Peace</span>
+    <span class="marquee-item">Raise Your Voice</span>
+    <span class="marquee-item">Human Rights</span>
+    <span class="marquee-item">Ceasefire Now</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <p class="section-label reveal">Our Mission</p>
+  <h2 class="section-title reveal">Raising awareness for <em>Palestine</em></h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>The Palestinian people have endured <strong>decades of displacement, occupation, and conflict</strong>. The humanitarian situation in Gaza and the West Bank remains one of the most pressing crises of our time.</p>
+      <p>This platform exists to <strong>educate, inform, and mobilize</strong> people around the world. We believe that awareness is the first step toward justice.</p>
+      <p>We are not a payment platform — we are a <strong>movement of voices</strong>. We connect you to verified humanitarian organizations and guide you on how to take meaningful action.</p>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <div class="about-card-title">What you should know</div>
+        <div class="fact-list">
+          <div class="fact-item">
+            <div class="fact-icon">🏠</div>
+            <div class="fact-text"><strong>Displacement Crisis</strong>Over 5.9 million Palestinian refugees registered with UNRWA worldwide.</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">🏥</div>
+            <div class="fact-text"><strong>Healthcare Emergency</strong>Hospitals face critical shortages of supplies and medical staff.</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">🍞</div>
+            <div class="fact-text"><strong>Food Insecurity</strong>Millions face acute food insecurity due to blockades and conflict.</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">📚</div>
+            <div class="fact-text"><strong>Education Under Threat</strong>Children's right to education severely disrupted by ongoing conflict.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO HELP -->
+<section class="help" id="help">
+  <p class="section-label reveal">Take Action</p>
+  <h2 class="section-title reveal">There are many ways to <em>help</em></h2>
+  <p class="help-intro reveal">You don't need money to make a difference. Your voice, your time, and your awareness are powerful tools for change.</p>
+  <div class="ways-grid">
+    <div class="way-card reveal">
+      <div class="way-num">01</div>
+      <div class="way-title">Educate Yourself</div>
+      <div class="way-desc">Learn the history of Palestine, understand the geopolitical context, and stay informed with reliable sources. Knowledge is the foundation of effective advocacy.</div>
+      <a href="#" class="way-link">Start Learning →</a>
+    </div>
+    <div class="way-card reveal">
+      <div class="way-num">02</div>
+      <div class="way-title">Spread Awareness</div>
+      <div class="way-desc">Share verified information on social media. Use your platform — no matter how small — to amplify Palestinian voices and humanitarian news.</div>
+      <a href="#" class="way-link">Share Resources →</a>
+    </div>
+    <div class="way-card reveal">
+      <div class="way-num">03</div>
+      <div class="way-title">Contact Representatives</div>
+      <div class="way-desc">Write to your elected officials. Call for a ceasefire, humanitarian corridors, and accountability. Political pressure from constituents creates real change.</div>
+      <a href="#" class="way-link">Find Your Rep →</a>
+    </div>
+    <div class="way-card reveal">
+      <div class="way-num">04</div>
+      <div class="way-title">Join Protests & Vigils</div>
+      <div class="way-desc">Physical presence at demonstrations and peaceful gatherings shows solidarity and puts pressure on governments and media to pay attention.</div>
+      <a href="#" class="way-link">Find Events →</a>
+    </div>
+    <div class="way-card reveal">
+      <div class="way-num">05</div>
+      <div class="way-title">Support Local Orgs</div>
+      <div class="way-desc">Connect with local Palestinian solidarity groups, mosques, cultural centers and diaspora communities to volunteer your time and skills.</div>
+      <a href="#" class="way-link">Find Groups →</a>
+    </div>
+    <div class="way-card reveal">
+      <div class="way-num">06</div>
+      <div class="way-title">Boycott & Divest</div>
+      <div class="way-desc">Support the BDS movement. Making conscious consumer choices is a form of peaceful, economic resistance.</div>
+      <a href="#" class="way-link">Learn About BDS →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CRISIS -->
+<section class="crisis" id="crisis">
+  <div class="crisis-grid">
+    <div>
+      <p class="section-label reveal">The Reality</p>
+      <h2 class="section-title reveal">Understanding the <em style="color:var(--sand)">humanitarian crisis</em></h2>
+      <div class="crisis-text">
+        <p class="reveal">The situation in Gaza and the occupied West Bank represents one of the world's most severe and prolonged humanitarian emergencies. Decades of blockade and conflict have created a devastating reality for millions of civilians.</p>
+        <p class="reveal">International human rights organizations including Amnesty International, Human Rights Watch, and the United Nations have documented widespread violations and called for urgent international action.</p>
+        <p class="reveal">The world cannot remain silent. Every day without action is another day that innocent children, families, and communities suffer.</p>
+      </div>
+    </div>
+    <div class="crisis-numbers">
+      <div class="crisis-num-item reveal">
+        <div class="crisis-big">2.3M+</div>
+        <div class="crisis-desc">People in Gaza living under blockade, with severely restricted access to food, water, medicine and electricity.</div>
+      </div>
+      <div class="crisis-num-item green reveal">
+        <div class="crisis-big">1948</div>
+        <div class="crisis-desc">The Nakba — when over 700,000 Palestinians were displaced from their homes. The struggle for justice has continued for over 75 years.</div>
+      </div>
+      <div class="crisis-num-item sand reveal">
+        <div class="crisis-big">140+</div>
+        <div class="crisis-desc">Countries that have recognized Palestine as a sovereign state, reflecting global support for Palestinian self-determination.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGS -->
+<section class="orgs" id="orgs">
+  <p class="section-label reveal">Trusted Organizations</p>
+  <h2 class="section-title reveal">Where your support can <em>go</em></h2>
+  <p class="orgs-intro reveal">These are globally recognized humanitarian organizations providing direct relief to Palestinians. Visit their websites to donate or volunteer.</p>
+  <div class="orgs-grid">
+    <div class="org-card reveal">
+      <div class="org-icon">🌍</div>
+      <div class="org-name">UNRWA</div>
+      <div class="org-desc">UN Relief and Works Agency for Palestine Refugees. Provides essential services including education, healthcare, and relief to over 5 million refugees.</div>
+      <a href="https://www.unrwa.org" target="_blank" class="org-link">Visit Website →</a>
+    </div>
+    <div class="org-card reveal">
+      <div class="org-icon">🏥</div>
+      <div class="org-name">Medical Aid for Palestinians</div>
+      <div class="org-desc">Works to improve the health of Palestinians living under occupation and as refugees, providing medical aid and health education.</div>
+      <a href="https://www.map.org.uk" target="_blank" class="org-link">Visit Website →</a>
+    </div>
+    <div class="org-card reveal">
+      <div class="org-icon">🤝</div>
+      <div class="org-name">Islamic Relief</div>
+      <div class="org-desc">Provides emergency relief and development programs including food, water, shelter and healthcare to families across Palestine.</div>
+      <a href="https://www.islamicrelief.com" target="_blank" class="org-link">Visit Website →</a>
+    </div>
+    <div class="org-card reveal">
+      <div class="org-icon">🍞</div>
+      <div class="org-name">World Food Programme</div>
+      <div class="org-desc">The UN's food assistance branch providing life-saving food aid and nutrition support to Palestinian families facing acute hunger.</div>
+      <a href="https://www.wfp.org" target="_blank" class="org-link">Visit Website →</a>
+    </div>
+    <div class="org-card reveal">
+      <div class="org-icon">👶</div>
+      <div class="org-name">Save the Children</div>
+      <div class="org-desc">Protecting children's rights in conflict zones, providing education, psychosocial support and emergency assistance to Palestinian children.</div>
+      <a href="https://www.savethechildren.org" target="_blank" class="org-link">Visit Website →</a>
+    </div>
+    <div class="org-card reveal">
+      <div class="org-icon">❤️</div>
+      <div class="org-name">Doctors Without Borders</div>
+      <div class="org-desc">MSF teams provide emergency medical care in Gaza and the West Bank, working in some of the most dangerous conditions imaginable.</div>
+      <a href="https://www.msf.org" target="_blank" class="org-link">Visit Website →</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <blockquote class="reveal">We will not stop fighting for justice, for dignity, and for the right of every Palestinian child to live in peace.</blockquote>
+  <p class="quote-attr reveal">— A Voice of Palestinian Solidarity</p>
+</div>
+
+<!-- TAKE ACTION -->
+<section class="action" id="action">
+  <p class="section-label reveal">Your Role</p>
+  <h2 class="section-title reveal">Small actions create <em>big change</em></h2>
+  <div class="action-grid">
+    <div class="action-item reveal">
+      <div class="action-emoji">📢</div>
+      <div class="action-title">Speak Up</div>
+      <div class="action-desc">Use your voice on social media to share the truth about Palestine and amplify Palestinian stories.</div>
+    </div>
+    <div class="action-item reveal">
+      <div class="action-emoji">✍️</div>
+      <div class="action-title">Write & Petition</div>
+      <div class="action-desc">Sign petitions, write op-eds, and contact your elected officials demanding humanitarian action.</div>
+    </div>
+    <div class="action-item reveal">
+      <div class="action-emoji">📚</div>
+      <div class="action-title">Read & Share</div>
+      <div class="action-desc">Read books, watch documentaries, and share verified educational content about Palestinian history.</div>
+    </div>
+    <div class="action-item reveal">
+      <div class="action-emoji">🕊️</div>
+      <div class="action-title">Stand in Solidarity</div>
+      <div class="action-desc">Attend local events, vigils, and rallies. Show Palestinians they are not alone in this struggle.</div>
+    </div>
+    <div class="action-item reveal">
+      <div class="action-emoji">🛒</div>
+      <div class="action-title">Conscious Choices</div>
+      <div class="action-desc">Support the BDS movement. Make informed purchasing decisions that align with your values for justice.</div>
+    </div>
+    <div class="action-item reveal">
+      <div class="action-emoji">🌐</div>
+      <div class="action-title">Build Community</div>
+      <div class="action-desc">Connect with Palestinian solidarity groups in your city. Community strength multiplies every action you take.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2 class="newsletter-title reveal">Stay Informed</h2>
+  <p class="newsletter-sub reveal">Subscribe to receive updates, resources, and calls to action for Palestine.</p>
+  <form class="newsletter-form reveal" onsubmit="handleSubscribe(event)">
+    <input type="email" placeholder="Enter your email address" required/>
+    <button type="submit">Subscribe</button>
+  </form>
+  <p id="subscribe-msg" style="color:#2d9e5f;margin-top:16px;font-size:14px;display:none;">
+    ✓ Thank you for joining the movement for justice.
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Free<span>Palestine</span></div>
+      <p class="footer-tagline">A humanitarian awareness platform standing in solidarity with the Palestinian people. No payment processing — just people, voices, and action.</p>
+      <div class="footer-flag">
+        <div class="ff-black"></div>
+        <div class="ff-white"></div>
+        <div class="ff-green"></div>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#help">How to Help</a></li>
+        <li><a href="#crisis">The Crisis</a></li>
+        <li><a href="#orgs">Organizations</a></li>
+        <li><a href="#action">Take Action</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="#">Palestinian History</a></li>
+        <li><a href="#">Media Toolkit</a></li>
+        <li><a href="#">BDS Movement</a></li>
+        <li><a href="#">Fact Sheets</a></li>
+        <li><a href="#">Reading List</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="#">Twitter / X</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Telegram</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 FreePalestine.org — For Humanity, For Justice</p>
+    <p class="footer-solidarity">🇵🇸 From the River to the Sea</p>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+function handleSubscribe(e) {
+  e.preventDefault();
+  document.getElementById('subscribe-msg').style.display = 'block';
+  e.target.reset();
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
